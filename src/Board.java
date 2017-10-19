@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Board {
 	protected Tile[][] tiles;
 	protected ArrayList<Piece> removedPieces;
-	
+	protected ArrayList<Tile> temp = new ArrayList<>();
 	public Board() {
 		tiles = new Tile[8][8];
 		removedPieces = new ArrayList<>();
@@ -31,7 +31,18 @@ public class Board {
 			}
 		}
 		//moving diagonally
-		//.....
+		else if(Math.abs(from.position.x - to.position.x) == Math.abs(from.position.y - to.position.y)) {
+			for(int i = from.position.x; i < to.position.x; i++) {
+				for(int j = to.position.y; j < to.position.y; j++) {
+					if(tiles[i][j].piece != null) {
+						temp.add(tiles[i][j]);
+					}
+				}
+			}
+		}
+		else {
+			return false;
+		}
 		return false;
 	} 
 	
@@ -94,20 +105,31 @@ public class Board {
 		
 		//initialize with pieces
 		
-		//initialize with Rooks
+		//initialize Rooks
 		tiles[0][0].piece = new Rook(Color.BLACK);
 		tiles[0][7].piece = new Rook(Color.BLACK);
 		tiles[7][0].piece = new Rook(Color.WHITE);
 		tiles[7][7].piece = new Rook(Color.WHITE);
 		
-		//initialize with Knights
+		//initialize Knights
 		tiles[0][1].piece = new Knight(Color.BLACK);
 		tiles[0][6].piece = new Knight(Color.BLACK);
 		tiles[7][1].piece = new Knight(Color.WHITE);
 		tiles[7][6].piece = new Knight(Color.WHITE);
 		
+		//initialize Bishops
+		tiles[0][2].piece = new Bishop(Color.BLACK);
+		tiles[0][5].piece = new Bishop(Color.BLACK);
+		tiles[7][2].piece = new Bishop(Color.WHITE);
+		tiles[7][5].piece = new Bishop(Color.WHITE);
+		
+		//initialize QUEENS
+		tiles[0][3].piece = new Queen(Color.BLACK);
+		tiles[7][3].piece = new Queen(Color.WHITE);
+		
 		//testing
-		//tiles[2][0].piece = new Knight(Color.BLACK);
+		tiles[3][6].piece = new Knight(Color.WHITE);
+		tiles[2][5].piece = new Knight(Color.BLACK);
 		
 	}
 	

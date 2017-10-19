@@ -11,7 +11,7 @@ public class Tile {
 	}
 	
 	public String toString() {
-		return "(" + this.position.x + ":" + this.position.y + ")" + this.piece + "	";
+		return "(" + this.position.x + ":" + this.position.y + ")" + this.piece + " | ";
 	}
 
 }

@@ -4,7 +4,7 @@ public class Main {
 		Board board = new Board();
 		board.initialize();
 		board.display();
-		board.movePiece(board.tiles[0][0], board.tiles[5][0]);
+		//board.movePiece(board.tiles[0][1], board.tiles[2][2]);
 		System.out.println();
 		System.out.println();
 		board.display();

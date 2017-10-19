@@ -11,6 +11,9 @@ public class Board {
 	
 	//checks the path between Tile from and Tile to for pieces and returns true for any found piece
 	public boolean checkPath(Tile from, Tile to) {
+		if(from.piece instanceof Knight) {
+			return false;
+		}
 		//moving horizontally
 		if(Math.abs(from.position.x - to.position.x) > 0 && Math.abs(from.position.y - to.position.y) == 0) {
 			for(int i = from.position.x + 1; i < to.position.x; i++) {
@@ -56,10 +59,15 @@ public class Board {
 					return true;
 				}
 				else { //destination tile has a Piece
-					removePiece(to);
-					to.piece = from.piece;
-					from.piece = null;
-					return true;
+					if(checkColor(from, to)) {
+						removePiece(to);
+						to.piece = from.piece;
+						from.piece = null;
+						return true;
+					}
+					else {
+						return false;
+					}
 				}
 			}
 			else { //other piece is in the way
@@ -91,6 +99,16 @@ public class Board {
 		tiles[0][7].piece = new Rook(Color.BLACK);
 		tiles[7][0].piece = new Rook(Color.WHITE);
 		tiles[7][7].piece = new Rook(Color.WHITE);
+		
+		//initialize with Knights
+		tiles[0][1].piece = new Knight(Color.BLACK);
+		tiles[0][6].piece = new Knight(Color.BLACK);
+		tiles[7][1].piece = new Knight(Color.WHITE);
+		tiles[7][6].piece = new Knight(Color.WHITE);
+		
+		//testing
+		//tiles[2][0].piece = new Knight(Color.BLACK);
+		
 	}
 	
 	public void display() {

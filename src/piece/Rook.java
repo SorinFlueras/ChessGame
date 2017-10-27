@@ -1,3 +1,6 @@
+package piece;
+import chess.Color;
+import chess.Tile;
 
 public class Rook extends Piece {
 
@@ -14,11 +17,11 @@ public class Rook extends Piece {
 	@Override
 	public boolean checkDirection(Tile from, Tile to) {
 		//moving horizontally
-		if(Math.abs(from.position.x - to.position.x) > 0 && Math.abs(from.position.y - to.position.y) == 0) {
+		if(Math.abs(from.getPosition().getX() - to.getPosition().getX()) > 0 && Math.abs(from.getPosition().getY() - to.getPosition().getY()) == 0) {
 			return true;
 		}
 		//moving vertically
-		else if(Math.abs(from.position.x - to.position.x) == 0 && Math.abs(from.position.y - to.position.y) > 0) {
+		else if(Math.abs(from.getPosition().getX() - to.getPosition().getX()) == 0 && Math.abs(from.getPosition().getY() - to.getPosition().getY()) > 0) {
 			return true;
 		}
 		//illegal move
@@ -28,6 +31,6 @@ public class Rook extends Piece {
 	}
 	
 	public String toString() {
-		return super.color + " ROOK";
+		return super.getColor() + " ROOK";
 	}
 }

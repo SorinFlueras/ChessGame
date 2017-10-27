@@ -1,3 +1,6 @@
+package piece;
+import chess.Color;
+import chess.Tile;
 
 public class Bishop extends Piece {
 
@@ -8,7 +11,7 @@ public class Bishop extends Piece {
 
 	@Override
 	public boolean checkDirection(Tile from, Tile to) {
-		if(Math.abs(from.position.x - to.position.x) == 1 && Math.abs(from.position.y - to.position.y) == 1) {
+		if(Math.abs(from.getPosition().getX() - to.getPosition().getX()) == 1 && Math.abs(from.getPosition().getY() - to.getPosition().getY()) == 1) {
 			return true;
 		}
 		else {
@@ -17,7 +20,7 @@ public class Bishop extends Piece {
 	}
 	
 	public String toString() {
-		return super.color + " BISHOP";
+		return super.getColor() + " BISHOP";
 	}
 
 }

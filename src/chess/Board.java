@@ -65,15 +65,56 @@ public class Board {
 			}
 		}
 		//moving diagonally
-		/*else if(Math.abs(from.position.x - to.position.x) == Math.abs(from.position.y - to.position.y)) {
-			for(int i = from.position.x; i < to.position.x; i++) {
-				for(int j = to.position.y; j < to.position.y; j++) {
-					if(tiles[i][j].piece != null) {
-						temp.add(tiles[i][j]);
-					}
+		else if(Math.abs(from.getPosition().getX() - to.getPosition().getX()) == Math.abs(from.getPosition().getY() - to.getPosition().getY())) {
+			/*cases (starting point(from) in middle and destination(to) in corners):
+			 *  |\1|2/|
+			 *  | \|/ |
+			 * 	|4/|\3|	
+			 *  |/ | \|
+			 *  
+			 *  1 - from.x > to.x && from.y > to.y; i-- j--
+			 *  2 - from.x > to.x && from.y < to.y; i-- j++
+			 *  3 - from.x < to.x && from.y < to.y; i++ j++
+			 *  4 - from.x < to.x && from.y < to.y; i++ j--
+			 * 
+			 */
+			
+			// case 1
+			if((to.getPosition().getX() < from.getPosition().getX()) && (to.getPosition().getY() < from.getPosition().getY())){
+				for(int i = from.getPosition().getX() - 1, j = from.getPosition().getY() - 1; i > to.getPosition().getX() && j > to.getPosition().getY(); i--, j--) {
+						if(getTiles()[i][j].getPiece() != null) {
+								return true;
+						}
 				}
 			}
-		}*/
+			
+			// case 2
+			if((to.getPosition().getX() < from.getPosition().getX()) && (to.getPosition().getY() > from.getPosition().getY())){
+				for(int i = from.getPosition().getX() - 1, j = from.getPosition().getY() + 1; i > to.getPosition().getX() && j < to.getPosition().getY(); i--, j++) {
+					if(getTiles()[i][j].getPiece() != null) {
+							return true;
+					}
+				}			
+			}
+			
+			// case 3
+			if((to.getPosition().getX() > from.getPosition().getX()) && (to.getPosition().getY() > from.getPosition().getY())){
+				for(int i = from.getPosition().getX() + 1, j = from.getPosition().getY() + 1; i < to.getPosition().getX() && j < to.getPosition().getY(); i++, j++) {
+					if(getTiles()[i][j].getPiece() != null) {
+							return true;
+					}
+				}			
+			}
+						
+			// case 4
+			if((to.getPosition().getX() > from.getPosition().getX()) && (to.getPosition().getY() < from.getPosition().getY())){
+				for(int i = from.getPosition().getX() + 1, j = from.getPosition().getY() - 1; i < to.getPosition().getX() && j > to.getPosition().getY(); i++, j--) {
+					if(getTiles()[i][j].getPiece() != null) {
+							return true;
+					}
+				}			
+			}
+		}
 		else {
 			return false;
 		}
@@ -162,8 +203,8 @@ public class Board {
 		tiles[7][3].setPiece(new Queen(Color.WHITE));
 		
 		//testing
-		tiles[3][6].setPiece(new Knight(Color.WHITE));
-		tiles[2][5].setPiece(new Knight(Color.BLACK));
+		//tiles[3][6].setPiece(new Knight(Color.WHITE));
+		tiles[5][6].setPiece(new Knight(Color.BLACK));
 		
 	}
 	

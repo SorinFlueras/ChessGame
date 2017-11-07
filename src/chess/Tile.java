@@ -1,5 +1,5 @@
 package chess;
-import piece.Piece;
+import chess.piece.Piece;
 
 public class Tile {
 	private Position position;

@@ -1,4 +1,4 @@
-package piece;
+package chess.piece;
 import chess.Color;
 import chess.Tile;
 

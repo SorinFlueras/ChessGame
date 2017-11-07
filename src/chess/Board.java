@@ -1,10 +1,11 @@
 package chess;
 import java.util.ArrayList;
-import piece.Bishop;
-import piece.Knight;
-import piece.Piece;
-import piece.Queen;
-import piece.Rook;
+
+import chess.piece.Bishop;
+import chess.piece.Knight;
+import chess.piece.Piece;
+import chess.piece.Queen;
+import chess.piece.Rook;
 
 public class Board {
 	private Tile[][] tiles;

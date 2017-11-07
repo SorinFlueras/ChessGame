@@ -22,9 +22,29 @@
 	</natures>
 	<linkedResources>
 		<link>
+			<name>src/images/WhitePawn.png</name>
+			<type>1</type>
+			<location>C:/Users/Sorin/eclipse-workspace/ChessGameV3/src/images/WhitePawn.png</location>
+		</link>
+		<link>
+			<name>src/images/WhiteRook.png</name>
+			<type>1</type>
+			<location>C:/Users/Sorin/eclipse-workspace/ChessGameV3/src/images/WhiteRook.png</location>
+		</link>
+		<link>
 			<name>src/images/chess-board.jpg</name>
 			<type>1</type>
 			<location>C:/Users/Sorin/eclipse-workspace/ChessGameV3/src/images/chess-board.jpg</location>
+		</link>
+		<link>
+			<name>src/images/testTile.png</name>
+			<type>1</type>
+			<location>C:/Users/Sorin/eclipse-workspace/ChessGameV3/src/images/testTile.png</location>
+		</link>
+		<link>
+			<name>src/images/testTile2.png</name>
+			<type>1</type>
+			<location>C:/Users/Sorin/eclipse-workspace/ChessGameV3/src/images/testTile2.png</location>
 		</link>
 	</linkedResources>
 </projectDescription>

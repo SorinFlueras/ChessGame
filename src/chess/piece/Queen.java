@@ -1,19 +1,14 @@
-package piece;
+package chess.piece;
 import chess.Color;
 import chess.Tile;
 
-public class Rook extends Piece {
+public class Queen extends Piece {
 
-	public Rook(Color color) {
+	public Queen(Color color) {
 		super(color);
+		// TODO Auto-generated constructor stub
 	}
-	
-	/*
-	@Override
-	public boolean checkMove(Tile from, Tile to) {
-		return false;
-	}*/
-	
+
 	@Override
 	public boolean checkDirection(Tile from, Tile to) {
 		//moving horizontally
@@ -24,13 +19,17 @@ public class Rook extends Piece {
 		else if(Math.abs(from.getPosition().getX() - to.getPosition().getX()) == 0 && Math.abs(from.getPosition().getY() - to.getPosition().getY()) > 0) {
 			return true;
 		}
-		//illegal move
+		//moving diagonally
+		else if(Math.abs(from.getPosition().getX() - to.getPosition().getX()) == Math.abs(from.getPosition().getY() - to.getPosition().getY())) {
+			return true;
+		}
 		else {
 			return false;
 		}
 	}
 	
 	public String toString() {
-		return super.getColor() + " ROOK";
+		return super.getColor() + " QUEEN";
 	}
+
 }

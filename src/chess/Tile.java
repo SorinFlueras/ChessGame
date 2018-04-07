@@ -35,7 +35,12 @@ public class Tile {
 
 
 	public String toString() {
-		return "(" + this.getPosition().getX() + ":" + this.getPosition().getY() + ")" + this.getPiece() + " | ";
+		if(this.getPiece() != null) {
+			return "(" + this.getPosition().getX() + ":" + this.getPosition().getY() + ")" + this.getPiece() + " |";
+		}
+		else {
+			return "(" + this.getPosition().getX() + ":" + this.getPosition().getY() + ")" +  " empty_tile |";
+		}
 	}
 
 }

@@ -2,7 +2,9 @@ package chess;
 import java.util.ArrayList;
 
 import chess.piece.Bishop;
+import chess.piece.King;
 import chess.piece.Knight;
+import chess.piece.Pawn;
 import chess.piece.Piece;
 import chess.piece.Queen;
 import chess.piece.Rook;
@@ -10,7 +12,7 @@ import chess.piece.Rook;
 public class Board {
 	private Tile[][] tiles;
 	private ArrayList<Piece> removedPieces;
-	private ArrayList<Tile> temp = new ArrayList<>();
+	//private ArrayList<Tile> temp = new ArrayList<>();
 	public Board() {
 		tiles = new Tile[8][8];
 		removedPieces = new ArrayList<>();
@@ -33,7 +35,7 @@ public class Board {
 	public void setRemovedPieces(ArrayList<Piece> removedPieces) {
 		this.removedPieces = removedPieces;
 	}
-
+/*
 	public ArrayList<Tile> getTemp() {
 		return temp;
 	}
@@ -42,7 +44,7 @@ public class Board {
 		this.temp = temp;
 	}
 
-
+*/
 
 	//checks the path between Tile from and Tile to for pieces and returns true for any found piece
 	public boolean checkPath(Tile from, Tile to) {
@@ -143,6 +145,10 @@ public class Board {
 				if(to.getPiece() == null) { //destination tile is empty
 					to.setPiece(from.getPiece());
 					from.setPiece(null);
+					if(from.getPiece() instanceof Pawn) {
+						int temp = ((Pawn)from.getPiece()).getNumberOfMoves();
+						((Pawn)from.getPiece()).setNumberOfMoves(temp++);
+					}
 					return true;
 				}
 				else { //destination tile has a Piece
@@ -150,6 +156,10 @@ public class Board {
 						removePiece(to);
 						to.setPiece(from.getPiece());
 						from.setPiece(null);
+						if(from.getPiece() instanceof Pawn) {
+							int temp = ((Pawn)from.getPiece()).getNumberOfMoves();
+							((Pawn)from.getPiece()).setNumberOfMoves(temp++);
+						}
 						return true;
 					}
 					else {
@@ -181,6 +191,12 @@ public class Board {
 		
 		//initialize with pieces
 		
+		//initialize Pawns
+		for(int i = 0; i < 8; i++) {
+			tiles[1][i].setPiece(new Pawn(Color.BLACK));
+			tiles[6][i].setPiece(new Pawn(Color.WHITE));
+		}
+		
 		//initialize Rooks
 		tiles[0][0].setPiece(new Rook(Color.BLACK));
 		tiles[0][7].setPiece(new Rook(Color.BLACK));
@@ -203,9 +219,14 @@ public class Board {
 		tiles[0][3].setPiece(new Queen(Color.BLACK));
 		tiles[7][3].setPiece(new Queen(Color.WHITE));
 		
+		//initialize KINGS
+		tiles[0][4].setPiece(new King(Color.BLACK));
+		tiles[7][4].setPiece(new King(Color.WHITE));
+
+		
 		//testing
 		//tiles[3][6].setPiece(new Knight(Color.WHITE));
-		tiles[5][6].setPiece(new Knight(Color.BLACK));
+		//tiles[5][6].setPiece(new Knight(Color.BLACK));
 		
 	}
 	
